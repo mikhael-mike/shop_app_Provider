@@ -14,43 +14,44 @@ class ProductItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // final product = Provider.of<Product>(context) ;
-    return Consumer<Product>(
-      builder: ((context, value, child) => ClipRRect(
+    final product = Provider.of<Product>(context);
+    print('product rebuild');
+    return ClipRRect(
         borderRadius: BorderRadius.circular(10),
         child: GridTile(
           child: GestureDetector(
               onTap: () {
                 Navigator.pushNamed(context, ProductDetail.routePage,
-                    arguments: value.id);
+                    arguments: product.id);
               },
               child: Image.network(
-                value.imageUrl,
+                product.imageUrl,
                 fit: BoxFit.cover,
               )),
           footer: GridTileBar(
             backgroundColor: Colors.black87,
             title: Text(
-              value.title,
+              product.title,
               textAlign: TextAlign.center,
             ),
-            leading: IconButton(
-                onPressed: () {
-                  value.toggleFavoriteStatus();
-                },
-                color: Theme.of(context).primaryColor,
-                icon: Icon(value.isFavorite ? Icons.favorite : Icons.favorite_border)),
+            leading: Consumer<Product>(
+              builder: (context, value, _) => IconButton(
+                  onPressed: () {
+                    product.toggleFavoriteStatus();
+                  },
+                  color: Theme.of(context).primaryColor,
+                  icon: Icon(product.isFavorite ? Icons.favorite : Icons.favorite_border)
+                  ),
+            ),
             trailing: IconButton(
               onPressed: () {},
               color: Theme.of(context).primaryColor,
               icon: Icon(Icons.shopping_bag),
             ),
           ),
+        
         ),
 
-      ))
-    
-      
     );
   }
 }
