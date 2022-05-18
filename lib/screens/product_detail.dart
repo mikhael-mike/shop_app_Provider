@@ -13,12 +13,12 @@ class ProductDetail extends StatelessWidget {
   Widget build(BuildContext context) {
 
     final routeId = ModalRoute.of(context)!.settings.arguments;
-    final foundId = 
+    final foundId;
     
     return Scaffold(
       appBar: AppBar(title: Text('title')),
 
-      body: null,
+      body: Text('hello'),
     );
     
   }
