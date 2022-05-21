@@ -48,12 +48,14 @@ class CartScreen extends StatelessWidget {
                     onPressed: (() {}),
                     child: Text('Order Now'),
                   ),
+                  SizedBox(height: 200,),
                   Expanded(
                     child: ListView.builder(
                       shrinkWrap: true,
                       itemCount: cart.itemCount,
                       itemBuilder: (context, index) => CartItem(
                           id: cart.items.values.toList()[index].id,
+                          productId: cart.items.keys.toList()[index],
                           title: cart.items.values.toList()[index].title,
                           quanitity:
                               cart.items.values.toList()[index].quanitity,
@@ -62,6 +64,7 @@ class CartScreen extends StatelessWidget {
                   ),
                 ],
               ),
+              
             ),
           )
         ],
