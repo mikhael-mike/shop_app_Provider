@@ -18,8 +18,8 @@ class OrderItem {
 class Orders with ChangeNotifier {
   List<OrderItem> _orders = [];
 
-  List<OrderItem> get _getOrders {
-    return [..._getOrders];
+  List<OrderItem> get orders {
+    return [...orders];
   }
 
   void addOrder(List<CartItem> cartProducts, double total) {
@@ -30,7 +30,6 @@ class Orders with ChangeNotifier {
             amount: total,
             products: cartProducts,
             dateTime: DateTime.now()));
-
             notifyListeners();
   }
 }
